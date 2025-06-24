@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arshiya Shaik | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9f8f4;
+      --accent: #cdb4db;
+      --text: #2d2d2d;
+      --subtext: #555;
+      --highlight: #e8dff5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+
+    .hero-content {
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .typing {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .cursor {
+      display: inline-block;
+      background-color: var(--accent);
+      width: 2px;
+      animation: blink 0.8s steps(2) infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .hero-content p {
+      color: var(--subtext);
+      margin-top: 1rem;
+    }
+
+    .hero-image img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 2rem;
+    }
+
+    h2 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin: 0.5rem 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--subtext);
+      margin-top: 2rem;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero-content">
+      <h1>Arshiya Shaik</h1>
+      <div class="typing">
+        <div><span id="typed-text-line1"></span><span class="cursor">|</span></div>
+        <div><span id="typed-text-line2"></span></div>
+      </div>
+      <p>I’m a resourceful and driven engineer with a strong passion for tackling complex challenges. I thrive in fast-paced environments that call for innovative thinking, creative problem-solving, and a hands-on, proactive mindset.</p>
+    </div>
+    <div class="hero-image">
+      <img src="your-image.jpg" alt="Your Photo">
+    </div>
+  </header>
+
+  <section data-aos="fade-up">
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>Weather App</strong> – Built with Python & Flask; fetches live weather data and displays user-friendly summaries.</li>
+      <li><strong>Social Network Model (Math IA)</strong> – Used graph theory to analyze social connections and communication flow.</li>
+      <li><strong>Bluetooth Robot Car</strong> – My MYP5 personal project: an autonomous robot controlled via mobile Bluetooth.</li>
+    </ul>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Work Experience</h2>
+    <ul>
+      <li><strong>Science Club Lead</strong> – Coordinated STEM events, led workshops and mentored junior students</li>
+      <li><strong>Coding Club Organizer</strong> – Created coding challenges and hands-on sessions for school-wide events</li>
+    </ul>
+  </section>
+
+  <section data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Let's connect! Reach out via <a href="mailto:your.email@example.com">email</a> or find me on <a href="https://github.com/arshiyashaik">GitHub</a> and <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a>.</p>
+  </section>
+
+  <footer>
+    © 2025 Arshiya Shaik. Built with 💻 and clean pastel vibes.
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const text1 = "Computer Science & Applied Physics student at TU Eindhoven";
+    const text2 = "Resourceful engineer solving complex problems with innovation and creativity.";
+    const line1 = document.getElementById('typed-text-line1');
+    const line2 = document.getElementById('typed-text-line2');
+    let i = 0, j = 0;
+
+    function typeLine1() {
+      if (i < text1.length) {
+        line1.textContent += text1[i++];
+        setTimeout(typeLine1, 50);
+      } else {
+        setTimeout(typeLine2, 500);
+      }
+    }
+
+    function typeLine2() {
+      if (j < text2.length) {
+        line2.textContent += text2[j++];
+        setTimeout(typeLine2, 50);
+      }
+    }
+
+    window.onload = typeLine1;
+  </script>
+</body>
+</html>
