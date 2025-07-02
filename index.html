@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arshiya Shaik | Portfolio</title>
-  
+
   <!-- Fonts and Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -30,10 +30,9 @@
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding-top: 70px; /* to avoid overlap from fixed navbar */
+      padding-top: 70px;
     }
 
-    /* Navigation Bar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -144,79 +143,78 @@
       margin-top: 2rem;
       padding: 2rem;
     }
+
     .timeline-container {
-        position: relative;
-        margin-top: 3rem;
-        padding-left: 2rem;
-        border-left: 2px solid var(--accent);
-        }
+      position: relative;
+      margin-top: 3rem;
+      padding-left: 2rem;
+      border-left: 2px solid var(--accent);
+    }
 
-        .timeline-item {
-        position: relative;
-        margin-bottom: 3rem;
-        padding-left: 1rem;
-        }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 1rem;
+    }
 
-        .timeline-content {
-        background-color: #fff;
-        padding: 1rem 1.2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
+    .timeline-content {
+      background-color: #fff;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
 
-        .timeline-content h3 {
-        color: var(--text);
-        margin-bottom: 0.4rem;
-        }
+    .timeline-content h3 {
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
 
-        .timeline-content p {
-        color: var(--subtext);
-        font-size: 0.95rem;
-        margin-bottom: 0.6rem;
-        }
+    .timeline-content p {
+      color: var(--subtext);
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
 
-        .timeline-dot {
-        position: absolute;
-        left: -1.15rem;
-        top: 1rem;
-        width: 14px;
-        height: 14px;
-        background-color: var(--accent);
-        border-radius: 50%;
-        border: 3px solid #fff;
-        box-shadow: 0 0 0 2px var(--accent);
-        }
+    .timeline-dot {
+      position: absolute;
+      left: -1.15rem;
+      top: 1rem;
+      width: 14px;
+      height: 14px;
+      background-color: var(--accent);
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
 
-        .timeline-time {
-        position: absolute;
-        right: -6rem;
-        top: 1rem;
-        color: var(--subtext);
-        font-size: 0.85rem;
-        white-space: nowrap;
-        }
+    .timeline-time {
+      position: absolute;
+      right: -6rem;
+      top: 1rem;
+      color: var(--subtext);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
 
-        .skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
 
-        .skills span {
-        background-color: var(--highlight);
-        color: var(--text);
-        font-size: 0.75rem;
-        padding: 4px 10px;
-        border-radius: 999px;
-        font-weight: 500;
-        user-select: none;
-        }
-
+    .skills span {
+      background-color: var(--highlight);
+      color: var(--text);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 500;
+      user-select: none;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <nav>
     <div class="name">Arshiya Shaik</div>
     <div class="social-icons">
@@ -235,95 +233,101 @@
       <div class="typing">
         <div><span id="typed-text-line1"></span><span class="cursor">|</span></div>
       </div>
-      <p>I’m a resourceful and driven engineer with a strong passion for tackling complex challenges. I excel at turning ideas into practical solutions through collaboration and a results-focused mindset.</p>
+      <p>I’m an incoming double bachelor’s student in Computer Science and Applied Physics at TU Eindhoven, passionate about embedded systems, robotics, and problem-solving. From autonomous robots to AI-based weather apps, I enjoy building real-world solutions that merge technical depth with usability.</p>
     </div>
     <div class="hero-image">
-      <img src="C:\Users\shaik\portfolio\portfoliopic1.jpg" alt="Your Photo">
+      <img src="your-image.jpg" alt="Your Photo">
     </div>
   </header>
 
   <section id="projects" data-aos="fade-up">
-  <h2>Projects</h2>
-  <div class="timeline-container">
+    <h2>Projects</h2>
+    <div class="timeline-container">
 
-    <!-- Project 1 -->
-    <div class="timeline-item" data-aos="fade-left">
-      <div class="timeline-content">
-        <h3>Autonomous Robot Car</h3>
-        <p>Built a Bluetooth-controlled robot car using Arduino, capable of autonomous navigation using sensors.</p>
-        <div class="skills">
-          <span>Arduino</span><span>C++</span><span>Bluetooth</span><span>Sensors</span>
+      <div class="timeline-item" data-aos="fade-left">
+        <div class="timeline-content">
+          <h3>Bluetooth-Controlled Autonomous Robot Car</h3>
+          <p>Designed and programmed an autonomous robot car using Arduino and C++. Integrated sensors for obstacle detection and implemented pathfinding logic.</p>
+          <div class="skills">
+            <span>Arduino</span><span>C++</span><span>Sensors</span><span>Bluetooth</span>
+          </div>
         </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">Jan-Mar 2023</div>
       </div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-time">Jan-Mar 2022</div>
-    </div>
 
-    <!-- Project 2 -->
-    <div class="timeline-item" data-aos="fade-left">
-      <div class="timeline-content">
-        <h3>Weather App</h3>
-        <p>Python + Flask web app that fetches real-time weather data via API and displays it in a clean UI.</p>
-        <div class="skills">
-          <span>Python</span><span>Flask</span><span>API</span><span>Web Design</span>
+      <div class="timeline-item" data-aos="fade-left">
+        <div class="timeline-content">
+          <h3>Weather Forecasting App</h3>
+          <p>Developed a Python-based neural network to forecast local weather patterns. Implemented supervised learning with real environmental datasets and visualized model accuracy.</p>
+          <div class="skills">
+            <span>Python</span><span>Machine Learning</span><span>Data Viz</span><span>Neural Networks</span>
+          </div>
         </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">Apr-May 2024</div>
       </div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-time">Nov-Dec 2023</div>
-    </div>
 
-    <!-- Project 3 -->
-    <div class="timeline-item" data-aos="fade-left">
-      <div class="timeline-content">
-        <h3>BudgetBunny</h3>
-        <p>A budgeting tool for students to manage expenses, set goals, and visualize spending with charts.</p>
-        <div class="skills">
-          <span>JavaScript</span><span>UI/UX</span><span>Data Viz</span>
+      <div class="timeline-item" data-aos="fade-left">
+        <div class="timeline-content">
+          <h3>BudgetBunny</h3>
+          <p>A budgeting tool for students to manage expenses, set goals, and visualize spending with charts.</p>
+          <div class="skills">
+            <span>JavaScript</span><span>UI/UX</span><span>Data Viz</span>
+          </div>
         </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">Mar-Apr 2024</div>
       </div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-time">Mar-Apr 2024</div>
-    </div>
 
-    <!-- Project 4 -->
-    <div class="timeline-item" data-aos="fade-left">
-      <div class="timeline-content">
-        <h3>Hack4Her - EquiLeap </h3>
-        <p>Full-stack data visualization platform built in 18 hours using HTML, JS, CSS & JSON for the backend.</p>
-        <div class="skills">
-          <span>HTML</span><span>Tailwind CSS</span><span>JavaScript</span><span>React.js</span><span>Full Stack</span>
+      <div class="timeline-item" data-aos="fade-left">
+        <div class="timeline-content">
+          <h3>Hack4Her - EquiLeap</h3>
+          <p>Full-stack data visualization platform built in 18 hours using HTML, JS, CSS & JSON for the backend.</p>
+          <div class="skills">
+            <span>HTML</span><span>Tailwind CSS</span><span>JavaScript</span><span>React.js</span><span>Full Stack</span>
+          </div>
         </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">June 2024</div>
       </div>
-      <div class="timeline-dot"></div>
-      <div class="timeline-time">June 2024</div>
+
     </div>
-
-  </div>
-</section>
-
+  </section>
 
   <section data-aos="fade-up">
     <h2>Work Experience</h2>
     <ul>
-      <li><strong>Science Club Lead</strong> – Coordinated STEM events, led workshops and mentored junior students</li>
-      <li><strong>Coding Club Organizer</strong> – Created coding challenges and hands-on sessions for school-wide events</li>
+      <li>
+        <strong>Social Media Marketing Intern – Expat Spouses Initiative</strong> (Mar 2025 – Present)
+        <ul>
+          <li>Created and managed event content across Instagram and LinkedIn</li>
+          <li>Wrote creative visual and written content aligned with ESI branding</li>
+          <li>Analyzed KPIs and supported influencer strategy with A/B testing</li>
+          <li>Designed posts using Capcut, Canva, and Adobe tools</li>
+        </ul>
+      </li>
+      <li><strong>Science Club Lead</strong> – Coordinated STEM events and mentored junior students</li>
+      <li><strong>Coding Club Organizer</strong> – Designed coding challenges and led school workshops</li>
     </ul>
   </section>
 
   <section data-aos="fade-up">
     <h2>Contact</h2>
-    <p>Let's connect! Reach out via <a href="mailto:your.email@example.com">email</a> or find me on <a href="https://github.com/arshiyashaik">GitHub</a> and <a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a>.</p>
+    <p>
+      Let's connect! Reach out via <a href="mailto:shaik.arshiyatasneem24@gmail.com">email</a> or find me on 
+      <a href="https://github.com/arshiyashaik-24" target="_blank">GitHub</a> and 
+      <a href="https://www.linkedin.com/in/arshiya-shaik-569753313/" target="_blank">LinkedIn</a>.
+    </p>
   </section>
 
   <footer>
     © 2025 Arshiya Shaik. Built with 💻 and clean pastel vibes.
   </footer>
 
-  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-
     const text1 = "Computer Science & Applied Physics student at TU Eindhoven";
     const line1 = document.getElementById('typed-text-line1');
     let i = 0;
