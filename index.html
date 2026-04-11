@@ -1,337 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Arshiya Shaik — Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Arshiya Shaik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --bg: #0d0d0d;
+    --surface: rgba(255,255,255,0.05);
+    --surface-hover: rgba(255,255,255,0.10);
+    --border: rgba(255,255,255,0.10);
+    --border-hover: rgba(99,102,241,0.50);
+    --accent: #6366f1;
+    --accent2: #3b82f6;
+    --accent-soft: rgba(99,102,241,0.20);
+    --text: #e8e8e8;
+    --text-muted: #9ca3af;
+    --text-dim: #4b5563;
+    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-body: 'Instrument Sans', sans-serif;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+  h1, h2, h3, h4 { font-family: var(--font-display); }
+  a { text-decoration: none; color: inherit; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  .grain { position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .mesh-gradient { background: radial-gradient(ellipse at top, rgba(79,70,229,0.08) 0%, transparent 50%), radial-gradient(ellipse at bottom left, rgba(59,130,246,0.05) 0%, transparent 50%); }
 
-  <style>
-    :root{
-      --bg:#05060a; /* near black */
-      --panel: rgba(255,255,255,0.03);
-      --glass: rgba(255,255,255,0.04);
-      --muted:#9aa3b2;
-      --text:#dbe9f8;
-      --accent1:#00e6ff; /* cyan */
-      --accent2:#4cc2ff; /* sky */
-      --accent3:#7ef3ff; /* neon */
-      --glow: 0 8px 40px rgba(76,194,255,0.08);
-      --radius:16px;
-      --maxw:1100px;
-    }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 500; background: rgba(13,13,13,0.90); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--font-display); font-size: 18px; font-weight: 700; background: linear-gradient(90deg, #818cf8, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 14px; color: var(--text-muted); transition: color 0.25s; }
+  .nav-links a:hover, .nav-links a.active { color: #fff; }
 
-    *{box-sizing:border-box}
-    html,body{height:100%;}
-    body{
-      margin:0;padding:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;
-    }
+  #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; padding: 120px 24px 80px; }
+  #hero .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(99,102,241,0.10) 0%, transparent 60%); pointer-events: none; }
+  .hero-inner { position: relative; z-index: 1; max-width: 1100px; width: 100%; margin: 0 auto; text-align: center; }
+  .hero-eyebrow { font-size: 12px; letter-spacing: 0.35em; text-transform: uppercase; color: #818cf8; font-weight: 500; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.3s; }
+  .hero-name { font-size: clamp(56px, 11vw, 108px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.0; background: linear-gradient(180deg, #fff 40%, #6b7280 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease forwards 0.1s; }
+  .hero-subtitle { font-size: 15px; color: var(--text-muted); margin-bottom: 10px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s; }
+  .hero-location { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-dim); margin-bottom: 40px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.6s; }
+  .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; animation: pulseDot 2.5s ease infinite; }
+  @keyframes pulseDot { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(129,140,248,0.4); } 50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(129,140,248,0); } }
+  .hero-tagline { font-size: clamp(18px, 2.5vw, 26px); font-weight: 300; color: #d1d5db; max-width: 800px; margin: 0 auto 52px; line-height: 1.5; opacity: 0; animation: fadeUp 0.7s ease forwards 0.7s; }
+  .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease forwards 0.85s; }
+  .btn-primary { padding: 14px 36px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%); color: #fff; border: none; border-radius: 10px; font-family: var(--font-body); font-size: 14px; font-weight: 500; cursor: pointer; display: inline-block; transition: box-shadow 0.3s, transform 0.2s; }
+  .btn-primary:hover { box-shadow: 0 20px 40px rgba(99,102,241,0.3); transform: translateY(-2px); }
+  .btn-outline { padding: 14px 36px; background: transparent; color: #d1d5db; border: 1px solid rgba(255,255,255,0.10); border-radius: 10px; font-family: var(--font-body); font-size: 14px; font-weight: 500; cursor: pointer; display: inline-block; transition: all 0.3s; }
+  .btn-outline:hover { border-color: rgba(99,102,241,0.5); color: #fff; background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+  .scroll-indicator { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); opacity: 0; animation: fadeUp 0.7s ease forwards 1.1s; }
+  .scroll-mouse { width: 24px; height: 40px; border: 2px solid rgba(255,255,255,0.20); border-radius: 12px; display: flex; justify-content: center; padding-top: 6px; }
+  .scroll-wheel { width: 4px; height: 8px; background: linear-gradient(to bottom, #818cf8, transparent); border-radius: 2px; animation: scrollWheel 2.5s ease infinite; }
+  @keyframes scrollWheel { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(12px); opacity: 0; } }
 
-    /* PARTICLE CANVAS */
-    #particles{position:fixed;inset:0;z-index:0;pointer-events:none;mix-blend-mode:screen}
+  .section { padding: 96px 24px; position: relative; z-index: 1; }
+  .section.highlight { background: rgba(255,255,255,0.015); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+  .section-header { margin-bottom: 64px; }
+  .section-title { font-size: clamp(36px, 5vw, 52px); font-weight: 700; letter-spacing: -0.025em; background: linear-gradient(135deg, #fff 0%, #6b7280 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; margin-bottom: 14px; }
+  .section-bar { width: 96px; height: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; }
 
-    /* NAV */
-    nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:40;display:flex;gap:18px;align-items:center;padding:8px 14px;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0.03),rgba(255,255,255,0.02));backdrop-filter:blur(6px);box-shadow:0 6px 30px rgba(0,0,0,0.6);}
-    .brand{font-weight:700;color:var(--text);padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,rgba(0,230,255,0.05),rgba(76,194,255,0.02));}
-    .nav-links{display:flex;gap:8px}
-    .nav-links a{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600;font-size:0.9rem}
-    .nav-links a:hover{color:var(--accent1);background:linear-gradient(90deg,rgba(76,194,255,0.03),transparent)}
-    .nav-social{display:flex;gap:10px}
-    .nav-social a{color:var(--muted);text-decoration:none;font-size:1.05rem}
-    .nav-social a:hover{color:var(--accent2)}
+  .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 56px; align-items: start; }
+  .about-text p { color: #d1d5db; line-height: 1.8; margin-bottom: 20px; font-size: 15.5px; }
+  .about-text p.muted { color: var(--text-muted); }
+  .about-text p:last-child { margin-bottom: 0; }
+  .skills-label { font-size: 17px; font-family: var(--font-display); font-weight: 600; color: #818cf8; margin-bottom: 20px; }
+  .skills-list { display: flex; flex-direction: column; gap: 10px; }
+  .skill-item { padding: 12px 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; font-size: 14px; color: #d1d5db; transition: border-color 0.25s, background 0.25s, transform 0.25s; cursor: default; }
+  .skill-item:hover { border-color: var(--border-hover); background: var(--surface-hover); transform: translateX(4px); }
 
-    /* PAGE CONTAINER */
-    .wrap{position:relative;z-index:10;max-width:var(--maxw);margin:100px auto;padding:32px}
+  .filter-bar { display: flex; gap: 12px; margin-bottom: 48px; flex-wrap: wrap; justify-content: center; }
+  .filter-btn { padding: 10px 24px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.05); color: var(--text-muted); font-family: var(--font-body); font-size: 13px; cursor: pointer; transition: all 0.25s; position: relative; overflow: hidden; }
+  .filter-btn::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transform: scaleX(0); transition: transform 0.3s ease; }
+  .filter-btn:hover { color: #fff; }
+  .filter-btn.active { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.20); color: #fff; }
+  .filter-btn.active::after { transform: scaleX(1); }
 
-    /* HERO */
-    .hero{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:center;padding:36px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:var(--glow)}
-    .name {font-size:2.4rem;font-weight:800;letter-spacing:-1px;background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .title {font-size:1.05rem;color:var(--muted);margin-top:6px}
-    .typed {margin-top:12px;font-weight:600;color:var(--text)}
-    .hero-card{background:linear-gradient(135deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:16px;border-radius:14px;border:1px solid rgba(76,194,255,0.06);}
-    .bio{color:var(--muted);line-height:1.6}
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .project-card { padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; cursor: pointer; display: flex; flex-direction: column; transition: border-color 0.3s, background 0.3s, transform 0.3s; }
+  .project-card:hover { border-color: var(--border-hover); background: var(--surface-hover); transform: translateY(-4px); }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 8px; }
+  .card-title { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: #f3f4f6; line-height: 1.3; flex: 1; }
+  .card-arrow { width: 20px; height: 20px; color: #818cf8; flex-shrink: 0; transition: transform 0.3s; }
+  .project-card.open .card-arrow { transform: rotate(180deg); }
+  .card-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px; flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
+  .tag { padding: 4px 12px; background: rgba(99,102,241,0.20); border: 1px solid rgba(99,102,241,0.30); border-radius: 99px; font-size: 11px; color: #818cf8; font-weight: 500; }
+  .card-details { overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.3s ease; }
+  .project-card.open .card-details { max-height: 400px; opacity: 1; margin-top: 14px; }
+  .card-details-inner { padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.07); }
+  .card-details-inner p { font-size: 13px; color: #6b7280; line-height: 1.7; }
 
-    /* glass stats */
-    .stats{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:12px;background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
-    .stat-row{display:flex;justify-content:space-between;align-items:center}
-    .stat-row .k{font-weight:700;color:var(--accent3)}
-    .quick-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-    .chip{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg,rgba(127,243,255,0.06),rgba(76,194,255,0.03));font-weight:700;color:var(--text);border:1px solid rgba(127,243,255,0.04)}
+  /* ── TIMELINE EXPERIENCE ── */
+  .exp-timeline { position: relative; padding-left: 32px; display: flex; flex-direction: column; gap: 0; }
+  .exp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), rgba(99,102,241,0.1));
+    border-radius: 99px;
+  }
+  .exp-entry { position: relative; padding-bottom: 40px; }
+  .exp-entry:last-child { padding-bottom: 0; }
+  .exp-dot {
+    position: absolute;
+    left: -28px;
+    top: 14px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    z-index: 1;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .exp-entry:hover .exp-dot {
+    border-color: #a5b4fc;
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.18);
+  }
+  .exp-entry.incoming .exp-dot {
+    border-color: #60a5fa;
+    background: rgba(59,130,246,0.15);
+  }
+  .exp-card-new {
+    padding: 22px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+  .exp-card-new:hover {
+    border-color: var(--border-hover);
+    background: var(--surface-hover);
+    transform: translateX(4px);
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
+  .exp-role-new { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: #f3f4f6; line-height: 1.3; }
+  .exp-org-new { font-size: 13.5px; color: var(--text-muted); margin-bottom: 10px; }
+  .exp-time-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(99,102,241,0.25);
+    border-radius: 99px;
+    font-size: 11px; color: #818cf8; font-weight: 500;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .exp-time-badge.incoming {
+    background: rgba(59,130,246,0.15);
+    border-color: rgba(59,130,246,0.30);
+    color: #60a5fa;
+  }
+  .exp-time-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .exp-desc-new { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 10px; }
+  .exp-impact {
+    font-size: 12.5px;
+    color: #6366f1;
+    font-style: italic;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    line-height: 1.6;
+  }
+  .exp-type-chip {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 99px;
+    font-size: 10.5px;
+    color: var(--text-dim);
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
 
-    /* CARD SECTIONS */
-    section{margin-top:28px;border-radius:14px;padding:22px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);box-shadow:0 6px 30px rgba(2,20,30,0.4)}
-    h2{font-size:1.2rem;color:var(--accent2);margin-bottom:12px}
-    p, li{color:var(--muted)}
+  .edu-card { max-width: 760px; margin: 0 auto; padding: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; transition: border-color 0.25s, background 0.25s; }
+  .edu-card:hover { border-color: var(--border-hover); background: var(--surface-hover); }
+  .edu-uni { font-size: clamp(22px, 3vw, 28px); font-weight: 700; background: linear-gradient(90deg, #818cf8, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 28px; }
+  .edu-degrees { display: flex; flex-direction: column; gap: 18px; }
+  .edu-degree { display: flex; align-items: flex-start; gap: 16px; }
+  .edu-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+  .edu-degree-name { font-size: 18px; color: #e5e7eb; font-weight: 500; margin-bottom: 3px; }
+  .edu-sub { font-size: 13px; color: #4b5563; }
 
-    /* PROJECT TIMELINE - futuristic */
-    .timeline{display:flex;flex-direction:column;gap:18px}
-    .proj{display:grid;grid-template-columns:18px 1fr 110px;gap:12px;align-items:start;padding:14px;border-radius:12px;background:linear-gradient(90deg,rgba(0,0,0,0.02),rgba(255,255,255,0.01));border-left:3px solid rgba(76,194,255,0.06)}
-    .proj-dot{width:14px;height:14px;border-radius:50%;background:var(--accent1);box-shadow:0 0 20px rgba(0,230,255,0.18)}
-    .proj h3{margin:0;font-size:1rem;color:var(--text)}
-    .proj .meta{color:var(--muted);font-size:0.88rem}
-    .proj .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .proj .tags .chip{background:transparent;border:1px solid rgba(127,243,255,0.06);}
-    .proj:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,120,200,0.06);border-left-color:var(--accent1)}
+  .video-wrapper { max-width: 1000px; margin: 0 auto; }
+  .video-placeholder { aspect-ratio: 16/9; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; cursor: pointer; transition: border-color 0.3s, background 0.3s; }
+  .video-placeholder:hover { border-color: var(--border-hover); background: var(--surface-hover); }
+  .play-ring { width: 88px; height: 88px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.20); display: flex; align-items: center; justify-content: center; transition: border-color 0.3s, transform 0.3s; }
+  .video-placeholder:hover .play-ring { border-color: var(--accent); transform: scale(1.08); }
+  .play-icon { color: #6b7280; transition: color 0.3s; }
+  .video-placeholder:hover .play-icon { color: #818cf8; }
+  .video-label { font-family: var(--font-display); font-size: 16px; font-weight: 500; color: var(--text-muted); }
+  .video-sublabel { font-size: 13px; color: #374151; }
 
-    /* EXPERIENCE GRID */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .exp{padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg,rgba(255,255,255,0.01),rgba(255,255,255,0.005))}
-    .exp .role{font-weight:700;color:var(--text)}
-    .exp .company{color:var(--muted);font-size:0.9rem}
+  #contact { text-align: center; }
+  .contact-intro { font-size: 16px; color: var(--text-muted); max-width: 500px; margin: 0 auto 40px; }
+  .contact-stack { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .contact-link { padding: 20px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 14px; color: #d1d5db; font-size: 15px; transition: all 0.25s; }
+  .contact-link:hover { border-color: var(--border-hover); background: var(--surface-hover); transform: translateY(-2px); }
+  .contact-link svg { color: #6b7280; transition: color 0.25s; flex-shrink: 0; }
+  .contact-link:hover svg { color: #818cf8; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .contact-card { padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; display: flex; flex-direction: column; align-items: center; gap: 12px; color: #d1d5db; font-size: 14px; font-weight: 500; transition: all 0.25s; }
+  .contact-card:hover { border-color: var(--border-hover); background: var(--surface-hover); transform: translateY(-2px); }
+  .contact-card svg { color: #6b7280; transition: color 0.25s; }
+  .contact-card:hover svg { color: #818cf8; }
 
-    /* CERTS & SKILLS */
-    .certs{display:flex;gap:10px;flex-wrap:wrap}
-    .cert{padding:10px 12px;border-radius:10px;background:linear-gradient(90deg,rgba(127,243,255,0.03),rgba(76,194,255,0.02));border-left:4px solid var(--accent1);font-weight:700;color:var(--text)}
+  footer { border-top: 1px solid rgba(255,255,255,0.05); padding: 40px 24px; text-align: center; margin-top: 80px; position: relative; z-index: 1; }
+  footer p { font-size: 13px; color: #374151; }
+  footer p + p { margin-top: 6px; font-size: 11px; color: #1f2937; }
 
-    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
-    .skill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg,var(--accent2),var(--accent3));color:#00111a;font-weight:700;box-shadow:0 6px 20px rgba(0,120,200,0.06)}
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* CONTACT */
-    .contact-links{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#00111a;font-weight:800;text-decoration:none}
-
-    footer{margin-top:36px;text-align:center;color:var(--muted);padding-bottom:60px}
-
-    /* responsive */
-    @media (max-width:940px){.hero{grid-template-columns:1fr;}.wrap{margin:80px 16px;padding:18px}.nav-links{display:none}}
-
-    /* subtle cursor pulse */
-    .pulse{position:relative}
-    .pulse:after{content:'';position:absolute;inset:-6px;border-radius:14px;box-shadow:0 0 40px rgba(76,194,255,0.06);opacity:0;transition:opacity .25s}
-    .pulse:hover:after{opacity:1}
-  </style>
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { nav .nav-links { display: none; } .projects-grid { grid-template-columns: 1fr; } .contact-grid { grid-template-columns: 1fr; } .exp-header { flex-direction: column; gap: 8px; } }
+</style>
 </head>
 <body>
+<div class="grain"></div>
 
-  <canvas id="particles"></canvas>
-
-  <nav aria-label="Primary navigation">
-    <div class="brand">Arshiya Shaik</div>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Arshiya Shaik</a>
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
-      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </div>
-    <div class="nav-social">
-      <a href="https://www.linkedin.com/in/arshiya-shaik-569753313/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/arshiyashaik-24" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="mailto:shaik.arshiyatasneem24@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+</nav>
+
+<section id="hero" class="mesh-gradient">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Systems Engineer</p>
+    <h1 class="hero-name">Arshiya Shaik</h1>
+    <p class="hero-subtitle">Double BSc &mdash; Computer Science &amp; Applied Physics, TU/e</p>
+    <p class="hero-location"><span class="pulse-dot"></span>&nbsp;Eindhoven, Netherlands</p>
+    <p class="hero-tagline">Building intelligent systems at the intersection of AI, robotics, and physics</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
     </div>
-  </nav>
-
-  <div class="wrap">
-
-    <header class="hero" role="banner" aria-labelledby="hero-heading">
-      <div>
-        <div id="hero-heading" class="name">Arshiya Shaik</div>
-        <div class="title">Double Bachelors — Computer Science & Applied Physics, TU/e</div>
-        
-
-        <div style="height:14px"></div>
-
-        <div class="hero-card pulse" data-aos="fade-up">
-          <p class="bio">Fascinated by robotics and AI, I enjoy exploring real-world systems and contributing to projects that bring ideas to life, from autonomous robots to AI-driven tools. These experiences have helped me develop problem-solving, teamwork, and leadership skills, and I am eager to continue learning and collaborating on innovative solutions.</p>
-          <div class="quick-chips" style="margin-top:12px">
-            <div class="chip">Team Daedalus</div>
-            <div class="chip">Acady Tutor</div>
-            </div>
-        </div>
-      </div>
-
-      <!-- right card with stats & chips -->
-      <aside class="stats" aria-hidden="false" data-aos="fade-left">
-        <div class="stat-row"><div class="muted">Location</div><div class="k">Eindhoven, NL</div></div>
-        <div class="stat-row"><div class="muted">University</div><div class="k">TU Eindhoven</div></div>
-        <div style="height:8px"></div>
-        <div style="font-weight:700;color:var(--muted);font-size:0.9rem">Core skills</div>
-        <div class="quick-chips">
-          <div class="chip">Robotics</div>
-          <div class="chip">Python</div>
-          <div class="chip">Machine Learning</div>
-        </div>
-        <div style="margin-top:10px">
-          <a class="cta" href="#contact">Get in touch <i class="fas fa-arrow-right" style="opacity:0.9"></i></a>
-        </div>
-      </aside>
-    </header>
-
-    <!-- ABOUT -->
-    <section id="about" data-aos="fade-up">
-      <h2>About</h2>
-      <p>I am a Computer Science and Applied Physics student with a strong interest in engineering and technology. I participate in robotics and AI projects, developing real-world systems and leading initiatives that bridge research and application.</p>
-      <div style="margin-top:14px">
-        <strong style="color:var(--text)">Top skills</strong>
-        <div class="skills">
-          <div class="skill">Robotics</div>
-          <div class="skill">Python</div>
-          <div class="skill">Machine Learning</div>
-          <div class="skill">C++</div>
-          <div class="skill">Public Speaking</div>
-          <div class="skill">Research</div>
-        </div>
-      </div>
-
-      <div style="margin-top:14px">
-        <strong style="color:var(--text)">Certifications & Awards</strong>
-        <div class="certs" style="margin-top:8px">
-          <div class="cert">JavaScript Essentials 1 — Cisco (Aug 2025)</div>
-          <div class="cert">Chip Design for AI — Hack4Her (Jun 2025)</div>
-          <div class="cert">Award of Academic Excellence — International School Eindhoven (May 2025)</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <!-- PROJECTS -->
-<section id="projects" data-aos="fade-up">
-  <h2>Projects</h2>
-  <div class="timeline">
-
-    <!-- Keys of Survival -->
-    <div class="proj" data-aos="fade-left">
-      <div class="proj-dot"></div>
-      <div>
-        <h3>Keys of Survival <span style="float:right;font-weight:600;color:var(--muted)">Oct-Nov 2025</span></h3>
-        <p>Lane-based survival game where players run through multiple lanes, collect color-coded keys, and unlock doors while avoiding zombies. Includes mini-games for variety and replayability.</p>
-        <div class="tags">
-          <div class="chip">Java</div>
-          <div class="chip">Game Dev</div>
-          <div class="chip">Procedural Generation</div>
-          <div class="chip">Mini-Games</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Hack4Her — EquiLeap -->
-    <div class="proj" data-aos="fade-left" data-aos-delay="160">
-      <div class="proj-dot"></div>
-      <div>
-        <h3>Hack4Her — EquiLeap <span style="float:right;font-weight:600;color:var(--muted)">Jun 2025</span></h3>
-        <p>Full-stack data visualization platform built in 18 hours, showcasing insights from social and environmental data with a user-friendly dashboard.</p>
-        <div class="tags">
-          <div class="chip">React</div>
-          <div class="chip">Full Stack</div>
-          <div class="chip">Data Viz</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BudgetBunny -->
-    <div class="proj" data-aos="fade-left" data-aos-delay="120">
-      <div class="proj-dot"></div>
-      <div>
-        <h3>BudgetBunny <span style="float:right;font-weight:600;color:var(--muted)">Mar–Apr 2025</span></h3>
-        <p>Student budgeting tool to track expenses, set goals, and visualize spending through interactive charts.</p>
-        <div class="tags">
-          <div class="chip">JavaScript</div>
-          <div class="chip">UI/UX</div>
-          <div class="chip">Data Viz</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Weather Forecasting App -->
-    <div class="proj" data-aos="fade-left" data-aos-delay="80">
-      <div class="proj-dot"></div>
-      <div>
-        <h3>Weather Forecasting App <span style="float:right;font-weight:600;color:var(--muted)">Nov 2023–Jan 2024</span></h3>
-        <p>Python neural network forecasts local weather patterns using environmental datasets. Includes interactive visualizations of model performance.</p>
-        <div class="tags">
-          <div class="chip">Python</div>
-          <div class="chip">ML</div>
-          <div class="chip">Data Viz</div>
-        </div>
-      </div>
-    </div>
-
-        <!-- Bluetooth-Controlled Robot Car -->
-    <div class="proj" data-aos="fade-left" data-aos-delay="40">
-      <div class="proj-dot"></div>
-      <div>
-        <h3>Bluetooth-Controlled Autonomous Robot Car <span style="float:right;font-weight:600;color:var(--muted)">Jan–Jun 2023</span></h3>
-        <p>Autonomous robot car using Arduino and C++. Integrated sensors for obstacle detection with Bluetooth remote control.</p>
-        <div class="tags">
-          <div class="chip">Arduino</div>
-          <div class="chip">C++</div>
-          <div class="chip">Sensors</div>
-          <div class="chip">Bluetooth</div>
-        </div>
-        <div style="margin-top:6px"><a href="Arshiya Shaik- PP Final Report.pdf" target="_blank" class="inline-link">📎 View Full Project Report</a></div>
-      </div>
-    </div>
-
-    
-
-    
-
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
   </div>
 </section>
 
-
-    <!-- EDUCATION -->
-    <section id="education" data-aos="fade-up">
-      <h2>Education</h2>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        <div><strong>Bachelor of Engineering (BE) — Computer Science & Engineering</strong><div style="color:var(--muted)">Eindhoven University of Technology — Jul 2025</div></div>
-        <div><strong>Bachelor of Science (BS) — Applied Physics</strong><div style="color:var(--muted)">Eindhoven University of Technology — Jul 2025</div></div>
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2 class="section-title">About</h2>
+      <div class="section-bar"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I am a Computer Science and Applied Physics student with a strong interest in engineering and intelligent systems. My work spans robotics, embedded systems, machine learning, and simulation, with a focus on building real-world, scalable solutions.</p>
+        <p class="muted">I thrive at the intersection of theory and practical implementation, exploring how complex systems behave and can be optimized. My interdisciplinary background allows me to approach challenges with both computational rigor and physical intuition, whether designing control systems for robotic manipulators or building neural networks for predictive modeling.</p>
+        <p class="muted">From embedded hardware to high-level AI architectures, I am driven by curiosity and the desire to create systems that deliver tangible impact in the real world.</p>
       </div>
-    </section>
-
-    <!-- CERTS -->
-    <section id="certs" data-aos="fade-up">
-      <h2>Licenses & Certifications</h2>
-      <div class="certs">
-        <div class="cert">JavaScript Essentials 1 — Cisco (Aug 2025)</div>
-        <div class="cert">Chip Design for AI — Hack4Her (Jun 2025)</div>
+      <div class="reveal">
+        <div class="skills-label">Core Competencies</div>
+        <div class="skills-list" id="skills-list"></div>
       </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" data-aos="fade-up">
-      <h2>Contact</h2>
-      <p class="muted">Let's connect! Reach out via email or find me on GitHub and LinkedIn. I'm open to collaboration, tutoring, and opportunities in robotics, embedded systems, and AI.</p>
-      <div class="contact-links" style="margin-top:12px">
-        <a class="cta" href="mailto:shaik.arshiyatasneem24@gmail.com">Contact • Email</a>
-        <a href="https://github.com/arshiyashaik-24" target="_blank" class="inline-link" style="color:var(--accent2)">GitHub</a>
-        <a href="https://www.linkedin.com/in/arshiya-shaik-569753313/" target="_blank" class="inline-link" style="color:var(--accent2)">LinkedIn</a>
-      </div>
-    </section>
-
-    <footer>© 2025 Arshiya Shaik — built with code & curiosity</footer>
-
+    </div>
   </div>
+</section>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({duration:700,once:true});
+<section id="projects" class="section highlight">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2 class="section-title">Projects</h2>
+      <div class="section-bar"></div>
+    </div>
+    <div class="filter-bar" id="filter-bar"></div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
 
-    // Typing effect (subtle)
-    const sentence = "Designing robotic systems, building ML tools, and leading student teams.";
-    const target = document.getElementById('type-target');
-    let ti = 0;
-    function typeTick(){ if(ti<sentence.length){ target.textContent = sentence.slice(0, ti+1); ti++; setTimeout(typeTick,34);} }
-    window.addEventListener('load', typeTick);
+<section id="experience" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2 class="section-title">Experience</h2>
+      <div class="section-bar"></div>
+    </div>
+    <div class="exp-timeline reveal" id="exp-timeline"></div>
+  </div>
+</section>
 
-    // Simple particle system for canvas background (small, performant)
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = innerWidth; let h = canvas.height = innerHeight;
-    const particles = [];
-    function rand(min,max){return Math.random()*(max-min)+min}
-    class P{constructor(){this.reset()} reset(){this.x=rand(0,w);this.y=rand(0,h);this.r=rand(0.4,1.6);this.vx=rand(-0.2,0.2);this.vy=rand(-0.1,0.4);this.alpha=rand(0.08,0.25)} update(){this.x+=this.vx;this.y+=this.vy;if(this.y>h+10){this.reset();this.y=-10}} draw(){ctx.beginPath();ctx.fillStyle=`rgba(126,243,255,${this.alpha})`;ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill()}} 
-    for(let i=0;i<140;i++)particles.push(new P());
-    function loop(){ctx.clearRect(0,0,w,h);for(const p of particles){p.update();p.draw()}requestAnimationFrame(loop)}
-    loop();
-    addEventListener('resize',()=>{w=canvas.width=innerWidth;h=canvas.height=innerHeight});
+<section id="education" class="section highlight">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2 class="section-title">Education</h2>
+      <div class="section-bar"></div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-uni">Eindhoven University of Technology</div>
+      <div class="edu-degrees">
+        <div class="edu-degree">
+          <div class="edu-dot" style="background:#6366f1;"></div>
+          <div>
+            <div class="edu-degree-name">Bachelor of Science: Computer Science and Engineering</div>
+            <div class="edu-sub">September 2025 - Present</div>
+          </div>
+        </div>
+        <div class="edu-degree">
+          <div class="edu-dot" style="background:#3b82f6;"></div>
+          <div>
+            <div class="edu-degree-name">Bachelor of Science: Applied Physics</div>
+            <div class="edu-sub">September 2025 - Present</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Smooth scroll for nav
-    document.querySelectorAll('nav a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});});});
-  </script>
+<section id="media" class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2 class="section-title">Project Showcase</h2>
+      <div class="section-bar"></div>
+    </div>
+    <div class="video-wrapper reveal">
+      <div class="video-placeholder">
+        <div class="play-ring">
+          <svg class="play-icon" width="36" height="36" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+          </svg>
+        </div>
+        <div class="video-label">Project Demo Reel</div>
+        <div class="video-sublabel">Robotics, AI &amp; Systems Engineering Work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section highlight">
+  <div class="section-inner">
+    <div class="section-header reveal" style="text-align:center;">
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="section-bar" style="margin:0 auto;"></div>
+    </div>
+    <p class="contact-intro reveal">Interested in collaboration, research opportunities, or technical discussions?</p>
+    <div class="contact-stack reveal">
+      <a href="mailto:shaik.arshiyatasneem24@gmail.com" class="contact-link">
+        <svg width="22" height="22" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+        shaik.arshiyatasneem24@gmail.com
+      </a>
+      <div class="contact-grid">
+        <a href="https://github.com/arshiyashaik-24" target="_blank" class="contact-card">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/arshiya-shaik-569753313/" target="_blank" class="contact-card">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Arshiya Shaik: Portfolio</p>
+  <p>Computer Science &amp; Applied Physics, TU/e &mdash; Eindhoven, Netherlands</p>
+</footer>
+
+<script>
+var skills = ["Robotics","Python","Machine Learning","C++","Embedded Systems","Computer Vision","Simulation & Systems Modeling","Data Visualization"];
+
+var projectData = {
+  robotics: {
+    label: "Robotics & Embedded",
+    items: [
+      { id:1, title:"Smart Waste Segregation System", desc:"Arduino-based autonomous classification system for wet, dry, and metallic waste using sensor fusion and real-time sorting algorithms. Currently in active development.", tags:["Arduino","Embedded Systems","Sensors","Sustainability","In Progress"], details:"Integrating capacitive moisture sensors, inductive proximity detection, and servo actuation for automated waste segregation. The system architecture is designed around reliable multi-class material detection, with ongoing work focused on improving sensor calibration, sorting accuracy, and robustness for real-world deployment conditions." },
+      { id:2, title:"Glove-Controlled Robotic Hand", desc:"Five-degree-of-freedom robotic manipulator with gesture-based control using flex sensor arrays and proportional servo actuation.", tags:["Robotics","Control Systems","HRI","Arduino"], details:"Real-time mapping of human finger movements to robotic actuation through calibrated flex sensor signal processing. Achieved sub-50ms latency for natural human-robot interaction and intuitive gesture control." },
+      { id:3, title:"Bluetooth-Controlled Autonomous Robot", desc:"Mobile robot platform with obstacle detection, wireless telemetry, and autonomous navigation capabilities.", tags:["Arduino","Robotics","Wireless Control","Navigation"], details:"Implemented sensor-based obstacle avoidance using ultrasonic ranging, dynamic path correction algorithms, and Bluetooth communication for remote monitoring and control." }
+    ]
+  },
+  aiSystems: {
+    label: "AI & Systems",
+    items: [
+      { id:4, title:"Traffic Flow Optimization Digital Twin", desc:"Multi-agent simulation framework modeling urban traffic dynamics, congestion patterns, and adaptive signal control optimization.", tags:["Simulation","Optimization","Systems Engineering","AI"], details:"Agent-based model simulating vehicle behavior, traffic signal timing, and flow optimization strategies. Validated against real-world traffic data from Eindhoven urban networks for accuracy and predictive capability." },
+      { id:5, title:"Weather Prediction Neural Network", desc:"Deep learning model for meteorological forecasting with multi-variate time-series analysis and uncertainty quantification.", tags:["Machine Learning","Python","Neural Networks","Data Science"], details:"LSTM-based architecture trained on historical climate data with feature engineering, model performance evaluation, and interactive visualization of prediction confidence intervals." },
+      { id:6, title:"Computer Vision — Team Daedalus", desc:"Perception system development for autonomous applications, focusing on real-time object detection and sensor fusion.", tags:["Computer Vision","AI","Perception Systems","Teamwork"], details:"Contributed to vision-based object detection, lane tracking algorithms, and multi-sensor fusion for high-speed autonomous navigation in competitive environments." },
+      { id:7, title:"CleanClick — TU/e High Tech Systems Contest", desc:"A wearable neuromuscular interface that allows surgeons to control operating room monitors through sterile gowns using surface EMG, eliminating verbal delegation and reducing operative delays.", tags:["sEMG","BioSignal Processing","Bluetooth HID","Medical Devices","Systems Design"], details:"CleanClick addresses a real and costly problem: surgeons cannot interact with imaging workstations mid-procedure without breaking sterile protocol. The solution uses surface electromyography to capture microvolt-level muscle impulses through Grade 3/4 surgical PPE. A Digital Clutch logic layer distinguishes intentional navigation commands from incidental hand motion during tool use, ensuring zero accidental inputs. The system communicates via a low-latency Bluetooth HID stack designed for plug-and-play compatibility with hospital PACS workstations. By returning control to the surgeon directly, CleanClick targets the financial cost of OR time and removes communication overhead in high-stakes clinical environments." }
+    ]
+  },
+  software: {
+    label: "Software & Full-Stack",
+    items: [
+      { id:8, title:"Keys of Survival", desc:"Lane-based survival game with procedural generation, dynamic obstacle systems, and integrated mini-game mechanics.", tags:["Java","Game Development","Procedural Generation","Logic Systems"], details:"Designed game architecture with procedurally generated levels, key collection mechanics, obstacle avoidance systems, and embedded mini-games. Focus on scalable logic systems and engaging gameplay design." },
+      { id:9, title:"EquiLeap — Hack4Her", desc:"Full-stack data visualization platform built in 18 hours, displaying social and environmental impact metrics through interactive dashboards.", tags:["React","Full Stack","Data Visualization","Hackathon"], details:"Rapid development of a complete web application with real-time data processing, responsive dashboard design, and intuitive visualization of complex datasets for social impact analysis." },
+      { id:10, title:"BudgetBunny", desc:"Student budgeting application with expense tracking, goal-setting features, and interactive financial visualization tools.", tags:["JavaScript","UI/UX","Data Visualization","Web Development"], details:"Designed and implemented a personal finance management interface with real-time expense tracking, budget analytics, and interactive charting for financial planning and goal monitoring." }
+    ]
+  }
+};
+
+var experiences = [
+  {
+    role: "Research Assistant",
+    org: "Canon Production Printing",
+    type: "Industry Research",
+    period: "Jul 2026 – Present",
+    incoming: true,
+    desc: "Automating analysis of high-resolution printhead inspection data using computer vision and machine learning. Combines applied physics and computational imaging to detect nozzle behavior and develop scalable diagnostic systems for industrial print quality assurance.",
+    impact: "Incoming role — bridging applied physics principles with production-scale ML diagnostics."
+  },
+  {
+    role: "Technical Demonstrator",
+    org: "Tech United Robotics",
+    type: "Robotics",
+    period: "Dec 2025 – Present",
+    incoming: false,
+    desc: "Representing robotics platforms at technical demonstrations and public-facing events. Communicating complex autonomous systems to diverse audiences and operating live systems in real-time environments.",
+    impact: "Operated systems in live demo settings with real-time constraints and external stakeholders."
+  },
+  {
+    role: "Computer Vision Engineer",
+    org: "Team Daedalus",
+    type: "Technical Team",
+    period: "Sep 2025 – Present",
+    incoming: false,
+    desc: "Developing perception systems for autonomous racing, including vision-based object detection and multi-sensor fusion pipelines for real-time decision-making.",
+    impact: "Contributed to perception pipelines for high-speed autonomous decision-making."
+  },
+  {
+    role: "IB Tutor",
+    org: "Acady",
+    type: "Education",
+    period: "Jul 2025 – Present",
+    incoming: false,
+    desc: "Providing structured tutoring in IB mathematics and science. Focused on simplifying complex concepts and building strong problem-solving skills tailored to individual students.",
+    impact: null
+  },
+  {
+    role: "Hack4Her Ambassador",
+    org: "Community Initiative",
+    type: "Leadership",
+    period: "Sep 2025 – Present",
+    incoming: false,
+    desc: "Promoting diversity in technology through mentorship, outreach, and participation in engineering-focused initiatives.",
+    impact: null
+  },
+  {
+    role: "Physics Council Member",
+    org: "TU/e",
+    type: "Academic Leadership",
+    period: "Jan 2026 – Present",
+    incoming: false,
+    desc: "Contributing to student representation and academic policy discussions within the Applied Physics department.",
+    impact: null
+  }
+];
+
+// Render skills
+var skillsList = document.getElementById("skills-list");
+skills.forEach(function(s) {
+  var el = document.createElement("div");
+  el.className = "skill-item reveal";
+  el.textContent = s;
+  skillsList.appendChild(el);
+});
+
+// Render timeline experience
+var expTimeline = document.getElementById("exp-timeline");
+experiences.forEach(function(e, i) {
+  var entry = document.createElement("div");
+  entry.className = "exp-entry reveal" + (e.incoming ? " incoming" : "");
+  entry.style.transitionDelay = (i * 0.08) + "s";
+
+  var impactHtml = e.impact ? "<div class='exp-impact'>→ " + e.impact + "</div>" : "";
+
+  entry.innerHTML =
+    "<div class='exp-dot'></div>" +
+    "<div class='exp-card-new'>" +
+      "<div class='exp-header'>" +
+        "<div>" +
+          "<div class='exp-role-new'>" + e.role + "</div>" +
+          "<div class='exp-org-new'>" + e.org + "</div>" +
+        "</div>" +
+        "<span class='exp-time-badge" + (e.incoming ? " incoming" : "") + "'>" +
+          "<span class='dot'></span>" + e.period +
+        "</span>" +
+      "</div>" +
+      "<span class='exp-type-chip'>" + e.type + "</span>" +
+      "<p class='exp-desc-new'>" + e.desc + "</p>" +
+      impactHtml +
+    "</div>";
+
+  expTimeline.appendChild(entry);
+});
+
+// Projects
+var activeFilter = "all";
+var openCardId = null;
+
+function getAllProjects() {
+  return projectData.robotics.items.concat(projectData.aiSystems.items, projectData.software.items);
+}
+
+function getFiltered() {
+  return activeFilter === "all" ? getAllProjects() : projectData[activeFilter].items;
+}
+
+function renderFilters() {
+  var bar = document.getElementById("filter-bar");
+  bar.innerHTML = "";
+  var filters = [{key:"all",label:"All Projects"},{key:"robotics",label:"Robotics & Embedded"},{key:"aiSystems",label:"AI & Systems"},{key:"software",label:"Software & Full-Stack"}];
+  filters.forEach(function(f) {
+    var btn = document.createElement("button");
+    btn.className = "filter-btn" + (activeFilter === f.key ? " active" : "");
+    btn.textContent = f.label;
+    btn.onclick = function() { activeFilter = f.key; renderFilters(); renderProjects(); };
+    bar.appendChild(btn);
+  });
+}
+
+function renderProjects() {
+  var grid = document.getElementById("projects-grid");
+  grid.innerHTML = "";
+  getFiltered().forEach(function(p, i) {
+    var card = document.createElement("div");
+    card.className = "project-card reveal" + (openCardId === p.id ? " open" : "");
+    card.style.transitionDelay = (i * 0.07) + "s";
+    var tags = p.tags.map(function(t) { return "<span class='tag'>" + t + "</span>"; }).join("");
+    card.innerHTML =
+      "<div class='card-top'><div class='card-title'>" + p.title + "</div>" +
+      "<svg class='card-arrow' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/></svg></div>" +
+      "<p class='card-desc'>" + p.desc + "</p>" +
+      "<div class='tags'>" + tags + "</div>" +
+      "<div class='card-details'><div class='card-details-inner'><p>" + p.details + "</p></div></div>";
+    card.onclick = function() {
+      var wasOpen = card.classList.contains("open");
+      document.querySelectorAll(".project-card.open").forEach(function(c) { c.classList.remove("open"); });
+      if (!wasOpen) { card.classList.add("open"); openCardId = p.id; } else { openCardId = null; }
+    };
+    grid.appendChild(card);
+  });
+  observeReveals();
+}
+
+function observeReveals() {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll(".reveal:not(.visible)").forEach(function(el) { obs.observe(el); });
+}
+
+window.addEventListener("scroll", function() {
+  var current = "";
+  document.querySelectorAll("section[id]").forEach(function(s) {
+    if (window.scrollY >= s.offsetTop - 110) current = s.getAttribute("id");
+  });
+  document.querySelectorAll(".nav-links a").forEach(function(a) {
+    a.classList.toggle("active", a.getAttribute("href") === "#" + current);
+  });
+});
+
+renderFilters();
+renderProjects();
+observeReveals();
+</script>
 </body>
 </html>
