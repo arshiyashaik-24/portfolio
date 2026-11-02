@@ -85,18 +85,18 @@
   .filter-btn.active { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.20); color: #fff; }
   .filter-btn.active::after { transform: scaleX(1); }
 
-  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
   .project-card { padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; cursor: pointer; display: flex; flex-direction: column; transition: border-color 0.3s, background 0.3s, transform 0.3s; }
   .project-card:hover { border-color: var(--border-hover); background: var(--surface-hover); transform: translateY(-4px); }
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; gap: 8px; }
-  .card-title { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: #f3f4f6; line-height: 1.3; flex: 1; }
+  .card-title { margin: 0; font-family: var(--font-display); font-size: 17px; font-weight: 600; color: #f3f4f6; line-height: 1.3; flex: 1; }
   .card-arrow { width: 20px; height: 20px; color: #818cf8; flex-shrink: 0; transition: transform 0.3s; }
   .project-card.open .card-arrow { transform: rotate(180deg); }
   .card-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; margin-bottom: 18px; flex: 1; }
   .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
   .tag { padding: 4px 12px; background: rgba(99,102,241,0.20); border: 1px solid rgba(99,102,241,0.30); border-radius: 99px; font-size: 11px; color: #818cf8; font-weight: 500; }
   .card-details { overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.4s ease, opacity 0.35s ease, margin-top 0.3s ease; }
-  .project-card.open .card-details { max-height: 400px; opacity: 1; margin-top: 14px; }
+  .project-card.open .card-details { max-height: 900px; opacity: 1; margin-top: 14px; }
   .card-details-inner { padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.07); }
   .card-details-inner p { font-size: 13px; color: #6b7280; line-height: 1.7; }
 
@@ -180,7 +180,7 @@
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 99px;
     font-size: 10.5px;
-    color: var(--text-dim);
+    color: var(--text-muted);
     font-weight: 500;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -223,6 +223,31 @@
   footer p { font-size: 13px; color: #374151; }
   footer p + p { margin-top: 6px; font-size: 11px; color: #1f2937; }
 
+  /* ── ADDITIONS ── */
+  .hero-location { margin-bottom: 14px; }
+  .hero-open { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; margin-bottom: 40px; border-radius: 99px; border: 1px solid rgba(129,140,248,0.30); background: rgba(99,102,241,0.10); color: #c7d2fe; font-size: 13px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.65s; }
+  .hero-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; max-width: 820px; margin: -20px auto 44px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.8s; }
+  .hero-stat { padding: 16px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; display: flex; flex-direction: column; gap: 2px; }
+  .hero-stat-num { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #fff; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .hero-stat-num small { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+  .hero-stat-label { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+  .featured-chip { display: inline-block; align-self: flex-start; padding: 3px 10px; margin-bottom: 10px; border-radius: 99px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+  .project-card.featured { border-color: rgba(99,102,241,0.30); }
+  .project-card:focus-visible, .filter-btn:focus-visible, a:focus-visible { outline: 2px solid #818cf8; outline-offset: 3px; }
+  .card-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; font-size: 13px; font-weight: 500; color: #a5b4fc; border-bottom: 1px solid rgba(165,180,252,0.35); }
+  .card-link:hover { color: #fff; border-bottom-color: #fff; }
+  .card-details-inner p + p { margin-top: 8px; }
+  .card-details-inner b { color: #9ca3af; font-weight: 600; }
+  .edu-card + .edu-card { margin-top: 20px; }
+  .edu-facts { list-style: none; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.07); display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--text-muted); }
+  .edu-facts b { color: #e5e7eb; font-weight: 600; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+  .exp-bullets li { position: relative; padding-left: 16px; font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+  .exp-bullets li::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 6px; height: 6px; border-radius: 50%; background: #818cf8; }
+  .exp-bullets b { color: #e5e7eb; font-weight: 600; }
+  @media (max-width: 640px) { .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: -28px; } .edu-card { padding: 28px 22px; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .reveal, .hero-eyebrow, .hero-name, .hero-subtitle, .hero-location, .hero-open, .hero-tagline, .hero-actions, .hero-stats, .scroll-indicator { opacity: 1 !important; transform: none !important; } html { scroll-behavior: auto; } }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -249,11 +274,18 @@
 <section id="hero" class="mesh-gradient">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow">Systems Engineer</p>
+    <p class="hero-eyebrow">Physics &times; Computing</p>
     <h1 class="hero-name">Arshiya Shaik</h1>
-    <p class="hero-subtitle">Double BSc &mdash; Computer Science &amp; Applied Physics, TU/e</p>
-    <p class="hero-location"><span class="pulse-dot"></span>&nbsp;Eindhoven, Netherlands</p>
-    <p class="hero-tagline">Building intelligent systems at the intersection of AI, robotics, and physics</p>
+    <p class="hero-subtitle">Double BSc &mdash; Computer Science &amp; Engineering and Applied Physics, TU/e</p>
+    <p class="hero-location">Eindhoven, Netherlands</p>
+    <p class="hero-open"><span class="pulse-dot"></span>Open to summer 2027 internships</p>
+    <p class="hero-tagline">I build models of physical and computational systems and test them against known answers &mdash; from optics and supersonic flow to market making and full-stack software.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="hero-stat-num">9.0<small>/10</small></span><span class="hero-stat-label">Average grade (GPA 3.8)</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">ML</span><span class="hero-stat-label">Internship at Canon</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">4</span><span class="hero-stat-label">Tested open-source projects</span></div>
+      <div class="hero-stat"><span class="hero-stat-num">71</span><span class="hero-stat-label">Automated tests across them</span></div>
+    </div>
     <div class="hero-actions">
       <a href="#projects" class="btn-primary">View Projects</a>
       <a href="#contact" class="btn-outline">Get in Touch</a>
@@ -272,9 +304,9 @@
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I am a Computer Science and Applied Physics student with a strong interest in engineering and intelligent systems. My work spans robotics, embedded systems, machine learning, and simulation, with a focus on building real-world, scalable solutions.</p>
-        <p class="muted">I thrive at the intersection of theory and practical implementation, exploring how complex systems behave and can be optimized. My interdisciplinary background allows me to approach challenges with both computational rigor and physical intuition, whether designing control systems for robotic manipulators or building neural networks for predictive modeling.</p>
-        <p class="muted">From embedded hardware to high-level AI architectures, I am driven by curiosity and the desire to create systems that deliver tangible impact in the real world.</p>
+        <p>I am a second-year double-degree student in Computer Science &amp; Engineering and Applied Physics at TU/e. My work spans machine learning, simulation, robotics and software engineering, and it usually follows one habit: build the model, test it against a known answer, and say how far it can be trusted.</p>
+        <p class="muted">This summer I worked as an Imaging and Machine Learning Intern at Canon Production Printing, building interpretable models that detect and classify nozzle anomalies on printhead nozzle plates. In my own projects I have simulated fiber Bragg grating sensors, supersonic jets and the schlieren images they produce, and market making under inventory risk, and built a full-stack search app with an explainable ranking.</p>
+        <p class="muted">I am looking for internships for summer 2027 in engineering, quantitative or software roles where physics and computing meet.</p>
       </div>
       <div class="reveal">
         <div class="skills-label">Core Competencies</div>
@@ -318,17 +350,22 @@
           <div class="edu-dot" style="background:#6366f1;"></div>
           <div>
             <div class="edu-degree-name">Bachelor of Science: Computer Science and Engineering</div>
-            <div class="edu-sub">September 2025 - Present</div>
+            <div class="edu-sub">September 2025 &ndash; September 2028 (expected)</div>
           </div>
         </div>
         <div class="edu-degree">
           <div class="edu-dot" style="background:#3b82f6;"></div>
           <div>
             <div class="edu-degree-name">Bachelor of Science: Applied Physics</div>
-            <div class="edu-sub">September 2025 - Present</div>
+            <div class="edu-sub">September 2025 &ndash; September 2028 (expected)</div>
           </div>
         </div>
       </div>
+      <ul class="edu-facts">
+        <li><b>9.0/10 average</b> (GPA 3.8/4.0)</li>
+        <li><b>Probability &amp; Statistics 10</b>, Linear Algebra 9, Calculus 9, Data Structures 8</li>
+        <li><b>80 ECTS</b> in year one (standard load: 60)</li>
+      </ul>
     </div>
     <div class="edu-card reveal">
       <div class="edu-uni">International School of Eindhoven</div>
@@ -336,30 +373,10 @@
         <div class="edu-degree">
           <div class="edu-dot" style="background:#6366f1;"></div>
           <div>
-            <div class="edu-degree-name">International Baccalaureate Diploma</div>
-            <div class="edu-sub">September 2023 - August 2025</div>
+            <div class="edu-degree-name">International Baccalaureate Diploma &middot; 41/45</div>
+            <div class="edu-sub">September 2023 &ndash; August 2025 &middot; Award of Academic Excellence (highest total grades, DP1&ndash;DP2)</div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="media" class="section">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <h2 class="section-title">Project Showcase</h2>
-      <div class="section-bar"></div>
-    </div>
-    <div class="video-wrapper reveal">
-      <div class="video-placeholder">
-        <div class="play-ring">
-          <svg class="play-icon" width="36" height="36" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-          </svg>
-        </div>
-        <div class="video-label">Project Demo Reel</div>
-        <div class="video-sublabel">Robotics, AI &amp; Systems Engineering Work</div>
       </div>
     </div>
   </div>
@@ -378,11 +395,11 @@
         shaik.arshiyatasneem24@gmail.com
       </a>
       <div class="contact-grid">
-        <a href="https://github.com/arshiyashaik-24" target="_blank" class="contact-card">
+        <a href="https://github.com/arshiyashaik-24" target="_blank" rel="noopener" class="contact-card">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
           GitHub
         </a>
-        <a href="https://www.linkedin.com/in/arshiya-shaik-569753313/" target="_blank" class="contact-card">
+        <a href="https://www.linkedin.com/in/arshiya-shaik-569753313/" target="_blank" rel="noopener" class="contact-card">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           LinkedIn
         </a>
@@ -397,32 +414,76 @@
 </footer>
 
 <script>
-var skills = ["Robotics","Python","Machine Learning","C++","Embedded Systems","Computer Vision","Simulation & Systems Modeling","Data Visualization"];
+var skills = [
+  "Python (NumPy, SciPy, pandas, pytest)",
+  "Machine Learning & Computer Vision",
+  "Numerical Simulation (ODE/PDE, Monte Carlo)",
+  "Probability & Statistical Inference",
+  "TypeScript, React & REST APIs",
+  "Java, C++ & MATLAB",
+  "Embedded Systems & Robotics (Arduino, ROS 2)",
+  "Testing & CI (pytest, Vitest, GitHub Actions)"
+];
+
+var GH = "https://github.com/arshiyashaik-24/";
 
 var projectData = {
-  robotics: {
-    label: "Robotics & Embedded",
+  research: {
+    label: "Research & Simulation",
     items: [
-      { id:1, title:"Smart Waste Segregation System", desc:"Arduino-based autonomous classification system for wet, dry, and metallic waste using sensor fusion and real-time sorting algorithms. Currently in active development.", tags:["Arduino","Embedded Systems","Sensors","Sustainability","In Progress"], details:"Integrating capacitive moisture sensors, inductive proximity detection, and servo actuation for automated waste segregation. The system architecture is designed around reliable multi-class material detection, with ongoing work focused on improving sensor calibration, sorting accuracy, and robustness for real-world deployment conditions." },
-      { id:2, title:"Glove-Controlled Robotic Hand", desc:"Five-degree-of-freedom robotic manipulator with gesture-based control using flex sensor arrays and proportional servo actuation.", tags:["Robotics","Control Systems","HRI","Arduino"], details:"Real-time mapping of human finger movements to robotic actuation through calibrated flex sensor signal processing. Achieved sub-50ms latency for natural human-robot interaction and intuitive gesture control." },
-      { id:3, title:"Bluetooth-Controlled Autonomous Robot", desc:"Mobile robot platform with obstacle detection, wireless telemetry, and autonomous navigation capabilities.", tags:["Arduino","Robotics","Wireless Control","Navigation"], details:"Implemented sensor-based obstacle avoidance using ultrasonic ranging, dynamic path correction algorithms, and Bluetooth communication for remote monitoring and control." }
-    ]
-  },
-  aiSystems: {
-    label: "AI & Systems",
-    items: [
-      { id:4, title:"Traffic Flow Optimization Digital Twin", desc:"Multi-agent simulation framework modeling urban traffic dynamics, congestion patterns, and adaptive signal control optimization.", tags:["Simulation","Optimization","Systems Engineering","AI"], details:"Agent-based model simulating vehicle behavior, traffic signal timing, and flow optimization strategies. Validated against real-world traffic data from Eindhoven urban networks for accuracy and predictive capability." },
-      { id:5, title:"Weather Prediction Neural Network", desc:"Deep learning model for meteorological forecasting with multi-variate time-series analysis and uncertainty quantification.", tags:["Machine Learning","Python","Neural Networks","Data Science"], details:"LSTM-based architecture trained on historical climate data with feature engineering, model performance evaluation, and interactive visualization of prediction confidence intervals." },
-      { id:6, title:"Computer Vision — Team Daedalus", desc:"Perception system development for autonomous applications, focusing on real-time object detection and sensor fusion.", tags:["Computer Vision","AI","Perception Systems","Teamwork"], details:"Contributed to vision-based object detection, lane tracking algorithms, and multi-sensor fusion for high-speed autonomous navigation in competitive environments." },
-      { id:7, title:"CleanClick — TU/e High Tech Systems Contest", desc:"A wearable neuromuscular interface that allows surgeons to control operating room monitors through sterile gowns using surface EMG, eliminating verbal delegation and reducing operative delays.", tags:["sEMG","BioSignal Processing","Bluetooth HID","Medical Devices","Systems Design"], details:"CleanClick addresses a real and costly problem: surgeons cannot interact with imaging workstations mid-procedure without breaking sterile protocol. The solution uses surface electromyography to capture microvolt-level muscle impulses through Grade 3/4 surgical PPE. A Digital Clutch logic layer distinguishes intentional navigation commands from incidental hand motion during tool use, ensuring zero accidental inputs. The system communicates via a low-latency Bluetooth HID stack designed for plug-and-play compatibility with hospital PACS workstations. By returning control to the surgeon directly, CleanClick targets the financial cost of OR time and removes communication overhead in high-stakes clinical environments." }
+      { id:11, featured:true, title:"Market Making under Inventory Risk", repo:"mm-lab",
+        desc:"How should a market maker set its quotes when holding inventory is risky and some traders know more than it does? A tested Python lab that answers this with stochastic control and statistics.",
+        tags:["Python","Stochastic Control","Statistics","Kalman Filter"],
+        details:["Reproduced the Avellaneda&ndash;Stoikov (2008) model in Monte Carlo, then solved the problem exactly through a linear-ODE form of the HJB equation. The exact strategy beat the textbook rule by more than 3 standard errors in certainty equivalent (65.4 vs 62.9).",
+                 "Calibrated the order-fill model by Poisson maximum likelihood; the <b>95% confidence intervals achieved 94&ndash;96% coverage</b> over 400 repeated experiments. Informed order flow halved a naive market maker's value, and a Kalman-filtered drift signal recovered part of it (32.2 &rarr; 39.7, vs 48.3 with perfect information)."] },
+      { id:12, featured:true, title:"Supersonic Jet & Schlieren Imaging Simulator", repo:"schlieren-jet-sim",
+        desc:"Simulates an under-expanded supersonic gas jet and the schlieren image a camera would record of it, to ask how small a flow feature an optical setup can actually detect.",
+        tags:["Python","Compressible Flow","Optics","Monte Carlo"],
+        details:["Compressible-flow (Euler) solver validated against exact solutions and experiment, within 2&ndash;5% for pressure ratios up to 10.",
+                 "Diagnosed a known numerical instability (the carbuncle) from the data and fixed it, then ran a Monte Carlo detection-limit study under realistic camera noise."] },
+      { id:13, featured:true, title:"Fiber Bragg Grating Interrogation Simulator", repo:"fbg-interrogation-sim",
+        desc:"Fiber Bragg grating sensors measure strain and temperature as tiny wavelength shifts. This simulator models the grating optics to study how cheaply those shifts can be read out, and how much resolution that costs.",
+        tags:["Python","Photonics","Coupled-Mode Theory","Signal Processing"],
+        details:["Transfer-matrix optical model based on coupled-mode theory; it agrees with the closed-form uniform-grating solution to 1e-9 and reproduces the expected strain sensitivity of about 1.21 pm per microstrain at 1550 nm.",
+                 "Models apodised and chirped gratings. Benchmarking of read-out schemes under realistic noise is in progress."] },
+      { id:14, title:"Quantum Wave-Packet Simulator",
+        desc:"Numerical solution of the time-dependent Schr&ouml;dinger equation for wave packets in time-varying potentials.",
+        tags:["Python","Quantum Mechanics","Numerical Methods"],
+        details:["Simulates how a quantum wave packet evolves and spreads as the potential around it changes over time."] },
+      { id:15, title:"Mathematics of Neural Networks",
+        desc:"A 4,000+ word independent research report on backpropagation and gradient-based optimisation.",
+        tags:["Mathematics","Machine Learning","Research Writing"],
+        details:["Derives how neural networks learn, from the chain rule behind backpropagation to the behaviour of gradient-based optimisers."] }
     ]
   },
   software: {
     label: "Software & Full-Stack",
     items: [
-      { id:8, title:"Keys of Survival", desc:"Lane-based survival game with procedural generation, dynamic obstacle systems, and integrated mini-game mechanics.", tags:["Java","Game Development","Procedural Generation","Logic Systems"], details:"Designed game architecture with procedurally generated levels, key collection mechanics, obstacle avoidance systems, and embedded mini-games. Focus on scalable logic systems and engaging gameplay design." },
-      { id:9, title:"EquiLeap — Hack4Her", desc:"Full-stack data visualization platform built in 18 hours, displaying social and environmental impact metrics through interactive dashboards.", tags:["React","Full Stack","Data Visualization","Hackathon"], details:"Rapid development of a complete web application with real-time data processing, responsive dashboard design, and intuitive visualization of complex datasets for social impact analysis." },
-      { id:10, title:"BudgetBunny", desc:"Student budgeting application with expense tracking, goal-setting features, and interactive financial visualization tools.", tags:["JavaScript","UI/UX","Data Visualization","Web Development"], details:"Designed and implemented a personal finance management interface with real-time expense tracking, budget analytics, and interactive charting for financial planning and goal monitoring." }
+      { id:16, featured:true, title:"StayScout", repo:"stayscout",
+        desc:"An accommodation search for Amsterdam that shows why each stay ranks where it does. You weight price, reviews, distance and amenities, and every result shows how many of its points came from each factor.",
+        tags:["TypeScript","React","Fastify","SQLite","CI"],
+        details:["Separate ranking library with min&ndash;max scaled features and a Bayesian-adjusted rating, so a 5.0 from one review does not beat a 4.8 from 500. Each factor's contribution adds up exactly to the score.",
+                 "REST API with input validation, stable cursor pagination and shareable shortlists; 24 automated tests run in GitHub Actions on every push. Uses a synthetic Amsterdam dataset."] },
+      { id:9, title:"EquiLeap &mdash; Hack4Her", desc:"Full-stack data visualization platform built in 18 hours, displaying social and environmental impact metrics through interactive dashboards.", tags:["React","Full Stack","Data Visualization","Hackathon"], details:["Built a complete web application in a hackathon setting, with responsive dashboards for exploring social-impact datasets."] },
+      { id:10, title:"BudgetBunny", desc:"Student budgeting application with expense tracking, goal-setting features, and interactive financial visualization tools.", tags:["JavaScript","UI/UX","Data Visualization","Web Development"], details:["Personal finance interface with expense tracking, budget analytics, and interactive charts for planning and goal monitoring."] },
+      { id:8, title:"Keys of Survival", desc:"Lane-based survival game with procedural generation, dynamic obstacle systems, and integrated mini-game mechanics.", tags:["Java","Game Development","Procedural Generation"], details:["Game architecture with procedurally generated levels, key collection, obstacle avoidance and embedded mini-games."] }
+    ]
+  },
+  aiSystems: {
+    label: "AI & Systems",
+    items: [
+      { id:7, title:"CleanClick &mdash; TU/e High Tech Systems Contest", desc:"Team lead on a wearable neuromuscular interface that lets surgeons control operating-room monitors through sterile gowns using surface EMG, removing the need to ask someone else to click.", tags:["sEMG","Biosignal Processing","Bluetooth HID","Medical Devices","Team Lead"], details:["Surgeons cannot touch imaging workstations mid-procedure without breaking sterile protocol. CleanClick captures muscle signals through surgical gowns and gloves, and a &ldquo;digital clutch&rdquo; layer separates deliberate commands from incidental hand movement during tool use.",
+               "The device appears to hospital workstations as a standard Bluetooth input device, so it needs no special software on their side."] },
+      { id:4, title:"Urban Traffic Digital Twin", desc:"Multi-agent simulation of urban traffic with adaptive traffic-signal control.", tags:["Simulation","Multi-Agent","Optimization","Python"], details:["100-vehicle agent-based model of vehicle behaviour and signal timing. Adaptive signal-control strategies reduced time spent in congestion by 10% in simulation."] },
+      { id:5, title:"Weather Prediction Neural Network", desc:"LSTM time-series model forecasting temperature, humidity and rainfall 10 days ahead for 100 cities.", tags:["Machine Learning","Python","LSTM","Time Series"], details:["Sequence model trained on historical weather data, with feature engineering and evaluation of forecast accuracy across cities."] }
+    ]
+  },
+  robotics: {
+    label: "Robotics & Embedded",
+    items: [
+      { id:2, title:"Glove-Controlled Robotic Hand", desc:"Five-degree-of-freedom robotic hand that copies the wearer's finger movements, using flex sensors and proportional servo control.", tags:["Robotics","Control Systems","HRI","Arduino"], details:["Calibrated flex-sensor signals are mapped to servo positions in real time, with roughly 60 ms latency from finger movement to robot response."] },
+      { id:1, title:"Smart Waste Segregation System", desc:"Arduino-based system that sorts waste into wet, dry and metallic streams using several sensors. In active development.", tags:["Arduino","Embedded Systems","Sensors","In Progress"], details:["Combines capacitive moisture sensing, inductive proximity detection and servo actuation. Current work focuses on sensor calibration and sorting reliability."] },
+      { id:3, title:"Bluetooth-Controlled Robot", desc:"Mobile robot with ultrasonic obstacle detection and Bluetooth remote control.", tags:["Arduino","Robotics","Wireless Control"], details:["Ultrasonic ranging for obstacle avoidance with path correction, plus Bluetooth for remote monitoring and control."] }
     ]
   }
 };
@@ -430,57 +491,68 @@ var projectData = {
 var experiences = [
   {
     role: "Imaging and Machine Learning Intern",
-    org: "Canon Production Printing",
-    type: "Industry Research",
-    period: "Jul 2026 – Present",
-    incoming: true,
-    desc: "Automating analysis of high-resolution printhead inspection data using computer vision and machine learning. Combines applied physics and computational imaging to detect nozzle behavior and develop scalable diagnostic systems for industrial print quality assurance.",
-    impact: "Incoming role — bridging applied physics principles with production-scale ML diagnostics."
-  },
-  {
-    role: "Technical Demonstrator",
-    org: "Tech United Robotics",
-    type: "Robotics",
-    period: "Dec 2025 – Present",
-    incoming: false,
-    desc: "Representing robotics platforms at technical demonstrations and public-facing events. Communicating complex autonomous systems to diverse audiences and operating live systems in real-time environments.",
-    impact: "Operated systems in live demo settings with real-time constraints and external stakeholders."
+    org: "Canon Production Printing &middot; Venlo",
+    type: "Industry &middot; Machine Learning",
+    period: "Jul 2026 – Sep 2026",
+    bullets: [
+      "Built pattern-recognition models that detect and classify nozzle anomalies on printhead nozzle plates for production quality inspection.",
+      "Generated synthetic training and test images in MATLAB and designed interpretable, physics-constrained features instead of a black-box model, so engineers can see why a plate is flagged.",
+      "Pipeline classifies up to <b>1,000 nozzle plates in about 0.59 s</b>."
+    ]
   },
   {
     role: "Computer Vision Engineer",
-    org: "Team Daedalus",
+    org: "Team Daedalus &middot; TU/e student team building a solar-powered autonomous wildfire-detection drone",
     type: "Technical Team",
     period: "Sep 2025 – Present",
-    incoming: false,
-    desc: "Developing perception systems for autonomous racing, including vision-based object detection and multi-sensor fusion pipelines for real-time decision-making.",
-    impact: "Contributed to perception pipelines for high-speed autonomous decision-making."
+    bullets: [
+      "Implementing real-time vision-based fire detection and tracking, and sending detected fire coordinates to the ground station."
+    ]
   },
   {
-    role: "IB Tutor",
-    org: "Acady",
-    type: "Education",
-    period: "Jul 2025 – Present",
-    incoming: false,
-    desc: "Providing structured tutoring in IB mathematics and science. Focused on simplifying complex concepts and building strong problem-solving skills tailored to individual students.",
-    impact: null
+    role: "Technical Demonstrator",
+    org: "Tech United Robotics &middot; TU/e",
+    type: "Robotics",
+    period: "Dec 2025 – Present",
+    bullets: [
+      "Operate autonomous robots in live demonstrations and explain their architecture to academic and industry audiences."
+    ]
+  },
+  {
+    role: "Student Representative",
+    org: "Applied Physics Program Council &middot; TU/e",
+    type: "Academic Leadership",
+    period: "Jan 2026 – Present",
+    bullets: [
+      "Represent students in academic policy discussions within the Applied Physics programme."
+    ]
   },
   {
     role: "Hack4Her Ambassador",
-    org: "Community Initiative",
-    type: "Leadership",
+    org: "Hack4Her",
+    type: "Community",
     period: "Sep 2025 – Present",
-    incoming: false,
-    desc: "Promoting diversity in technology through mentorship, outreach, and participation in engineering-focused initiatives.",
-    impact: null
+    bullets: [
+      "Won the Booking.com challenge at Hack4Her; now promote diversity in tech through outreach and mentoring."
+    ]
   },
   {
-    role: "Physics Council Member",
-    org: "TU/e",
-    type: "Academic Leadership",
-    period: "Jan 2026 – Present",
-    incoming: false,
-    desc: "Contributing to student representation and academic policy discussions within the Applied Physics department.",
-    impact: null
+    role: "IB Mathematics and Science Tutor",
+    org: "Acady &middot; Remote",
+    type: "Education",
+    period: "Jul 2025 – Present",
+    bullets: [
+      "Teach IB mathematics and science one-to-one through structured problem breakdown."
+    ]
+  },
+  {
+    role: "Social Media Marketing Intern",
+    org: "Expat Initiative &middot; Eindhoven",
+    type: "Internship",
+    period: "Mar 2025 – Aug 2025",
+    bullets: [
+      "Designed feedback-driven content using engagement analytics."
+    ]
   }
 ];
 
@@ -497,37 +569,35 @@ skills.forEach(function(s) {
 var expTimeline = document.getElementById("exp-timeline");
 experiences.forEach(function(e, i) {
   var entry = document.createElement("div");
-  entry.className = "exp-entry reveal" + (e.incoming ? " incoming" : "");
-  entry.style.transitionDelay = (i * 0.08) + "s";
-
-  var impactHtml = e.impact ? "<div class='exp-impact'>→ " + e.impact + "</div>" : "";
-
+  entry.className = "exp-entry reveal";
+  entry.style.transitionDelay = (i * 0.06) + "s";
+  var bullets = "<ul class='exp-bullets'>" + e.bullets.map(function(b) { return "<li>" + b + "</li>"; }).join("") + "</ul>";
   entry.innerHTML =
     "<div class='exp-dot'></div>" +
     "<div class='exp-card-new'>" +
       "<div class='exp-header'>" +
         "<div>" +
-          "<div class='exp-role-new'>" + e.role + "</div>" +
+          "<h3 class='exp-role-new'>" + e.role + "</h3>" +
           "<div class='exp-org-new'>" + e.org + "</div>" +
         "</div>" +
-        "<span class='exp-time-badge" + (e.incoming ? " incoming" : "") + "'>" +
-          "<span class='dot'></span>" + e.period +
-        "</span>" +
+        "<span class='exp-time-badge'><span class='dot'></span>" + e.period + "</span>" +
       "</div>" +
       "<span class='exp-type-chip'>" + e.type + "</span>" +
-      "<p class='exp-desc-new'>" + e.desc + "</p>" +
-      impactHtml +
+      bullets +
     "</div>";
-
   expTimeline.appendChild(entry);
 });
 
 // Projects
+var FILTER_ORDER = ["research", "software", "aiSystems", "robotics"];
 var activeFilter = "all";
 var openCardId = null;
 
 function getAllProjects() {
-  return projectData.robotics.items.concat(projectData.aiSystems.items, projectData.software.items);
+  var all = [];
+  FILTER_ORDER.forEach(function(k) { all = all.concat(projectData[k].items); });
+  // Featured projects first, otherwise keep category order.
+  return all.filter(function(p) { return p.featured; }).concat(all.filter(function(p) { return !p.featured; }));
 }
 
 function getFiltered() {
@@ -537,34 +607,49 @@ function getFiltered() {
 function renderFilters() {
   var bar = document.getElementById("filter-bar");
   bar.innerHTML = "";
-  var filters = [{key:"all",label:"All Projects"},{key:"robotics",label:"Robotics & Embedded"},{key:"aiSystems",label:"AI & Systems"},{key:"software",label:"Software & Full-Stack"}];
+  var filters = [{key:"all",label:"All Projects"}].concat(FILTER_ORDER.map(function(k) { return {key:k, label:projectData[k].label}; }));
   filters.forEach(function(f) {
     var btn = document.createElement("button");
+    btn.type = "button";
     btn.className = "filter-btn" + (activeFilter === f.key ? " active" : "");
+    btn.setAttribute("aria-pressed", activeFilter === f.key ? "true" : "false");
     btn.textContent = f.label;
     btn.onclick = function() { activeFilter = f.key; renderFilters(); renderProjects(); };
     bar.appendChild(btn);
   });
 }
 
+function toggleCard(card, p) {
+  var wasOpen = card.classList.contains("open");
+  document.querySelectorAll(".project-card.open").forEach(function(c) { c.classList.remove("open"); c.setAttribute("aria-expanded", "false"); });
+  if (!wasOpen) { card.classList.add("open"); card.setAttribute("aria-expanded", "true"); openCardId = p.id; } else { openCardId = null; }
+}
+
 function renderProjects() {
   var grid = document.getElementById("projects-grid");
   grid.innerHTML = "";
   getFiltered().forEach(function(p, i) {
+    var isOpen = openCardId === p.id;
     var card = document.createElement("div");
-    card.className = "project-card reveal" + (openCardId === p.id ? " open" : "");
-    card.style.transitionDelay = (i * 0.07) + "s";
+    card.className = "project-card reveal" + (p.featured ? " featured" : "") + (isOpen ? " open" : "");
+    card.style.transitionDelay = (i * 0.05) + "s";
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-expanded", isOpen ? "true" : "false");
     var tags = p.tags.map(function(t) { return "<span class='tag'>" + t + "</span>"; }).join("");
+    var details = p.details.map(function(d) { return "<p>" + d + "</p>"; }).join("");
+    var link = p.repo ? "<a class='card-link' href='" + GH + p.repo + "' target='_blank' rel='noopener'>View code on GitHub &rarr;</a>" : "";
     card.innerHTML =
-      "<div class='card-top'><div class='card-title'>" + p.title + "</div>" +
-      "<svg class='card-arrow' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/></svg></div>" +
+      (p.featured ? "<span class='featured-chip'>Featured</span>" : "") +
+      "<div class='card-top'><h3 class='card-title'>" + p.title + "</h3>" +
+      "<svg class='card-arrow' aria-hidden='true' fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/></svg></div>" +
       "<p class='card-desc'>" + p.desc + "</p>" +
       "<div class='tags'>" + tags + "</div>" +
-      "<div class='card-details'><div class='card-details-inner'><p>" + p.details + "</p></div></div>";
-    card.onclick = function() {
-      var wasOpen = card.classList.contains("open");
-      document.querySelectorAll(".project-card.open").forEach(function(c) { c.classList.remove("open"); });
-      if (!wasOpen) { card.classList.add("open"); openCardId = p.id; } else { openCardId = null; }
+      "<div class='card-details'><div class='card-details-inner'>" + details + link + "</div></div>";
+    card.onclick = function(ev) { if (ev.target.closest("a")) return; toggleCard(card, p); };
+    card.onkeydown = function(ev) {
+      if (ev.target !== card) return;
+      if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); toggleCard(card, p); }
     };
     grid.appendChild(card);
   });
