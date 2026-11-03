@@ -464,6 +464,11 @@ var projectData = {
         tags:["TypeScript","React","Fastify","SQLite","CI"],
         details:["Separate ranking library with min&ndash;max scaled features and a Bayesian-adjusted rating, so a 5.0 from one review does not beat a 4.8 from 500. Each factor's contribution adds up exactly to the score.",
                  "REST API with input validation, stable cursor pagination and shareable shortlists; 24 automated tests run in GitHub Actions on every push. Uses a synthetic Amsterdam dataset."] },
+      { id:5, featured:true, title:"Eindhoven Weather Forecaster",
+        desc:"A React app built on my own neural-network research: an LSTM model that forecasts temperature, humidity and rainfall, with Eindhoven as the focus city.",
+        tags:["React","LSTM","Time Series","Machine Learning","Research"],
+        details:["Grew out of my 4,000+ word research report on the mathematics of neural networks: I derived backpropagation and gradient-based training on paper, then applied it to a real forecasting problem.",
+                 "An LSTM sequence model predicts temperature, humidity and rainfall up to 10 days ahead from past weather data; the React front end lets you explore the Eindhoven forecast and how it changes over the coming days."] },
       { id:17, title:"Cerebra &mdash; AI Flashcards", 
         desc:"A flashcard web app that generates cards from your notes with an LLM and schedules reviews around the cards you find hardest.",
         tags:["Next.js 15","TypeScript","Tailwind","Prisma","Claude API"],
@@ -485,7 +490,6 @@ var projectData = {
         details:["Built with Kotlin and Jetpack Compose using MVVM and the repository pattern, so the recognition pipeline (OCR, then medical entity extraction) is separate from the UI.",
                  "Designed around transparency: confidence scores for each field and alternative readings when handwriting is ambiguous, plus a history of processed documents. A research and educational project, not for clinical use."] },
       { id:4, title:"Urban Traffic Digital Twin", desc:"Multi-agent simulation of urban traffic with adaptive traffic-signal control.", tags:["Simulation","Multi-Agent","Optimization","Python"], details:["100-vehicle agent-based model of vehicle behaviour and signal timing. Adaptive signal-control strategies reduced time spent in congestion by 10% in simulation."] },
-      { id:5, title:"Weather Prediction Neural Network", desc:"LSTM time-series model forecasting temperature, humidity and rainfall 10 days ahead for 100 cities.", tags:["Machine Learning","Python","LSTM","Time Series"], details:["Sequence model trained on historical weather data, with feature engineering and evaluation of forecast accuracy across cities."] }
     ]
   },
   robotics: {
