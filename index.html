@@ -419,8 +419,8 @@ var skills = [
   "Machine Learning & Computer Vision",
   "Numerical Simulation (ODE/PDE, Monte Carlo)",
   "Probability & Statistical Inference",
-  "TypeScript, React & REST APIs",
-  "Java, C++ & MATLAB",
+  "TypeScript, React, Next.js & REST APIs",
+  "Java, Kotlin (Android), C++ & MATLAB",
   "Embedded Systems & Robotics (Arduino, ROS 2)",
   "Testing & CI (pytest, Vitest, GitHub Actions)"
 ];
@@ -464,6 +464,11 @@ var projectData = {
         tags:["TypeScript","React","Fastify","SQLite","CI"],
         details:["Separate ranking library with min&ndash;max scaled features and a Bayesian-adjusted rating, so a 5.0 from one review does not beat a 4.8 from 500. Each factor's contribution adds up exactly to the score.",
                  "REST API with input validation, stable cursor pagination and shareable shortlists; 24 automated tests run in GitHub Actions on every push. Uses a synthetic Amsterdam dataset."] },
+      { id:17, title:"Cerebra &mdash; AI Flashcards", 
+        desc:"A flashcard web app that generates cards from your notes with an LLM and schedules reviews around the cards you find hardest.",
+        tags:["Next.js 15","TypeScript","Tailwind","Prisma","Claude API"],
+        details:["AI generation in three modes: classic question&ndash;answer, cloze (fill-in-the-blank) and conceptual &ldquo;why/how&rdquo; questions, through a server-side API route so the key never reaches the browser.",
+                 "Adaptive study: cards rated &ldquo;again&rdquo; are re-queued and difficult cards come first; each card stores an ease factor so full SM-2 spaced repetition can be added. Uses Server Components for data loading and Client Components for interaction, with a 3D card flip in pure CSS. The PostgreSQL schema is defined in Prisma; the interface currently runs on demo data."] },
       { id:9, title:"EquiLeap &mdash; Hack4Her", desc:"Full-stack data visualization platform built in 18 hours, displaying social and environmental impact metrics through interactive dashboards.", tags:["React","Full Stack","Data Visualization","Hackathon"], details:["Built a complete web application in a hackathon setting, with responsive dashboards for exploring social-impact datasets."] },
       { id:10, title:"BudgetBunny", desc:"Student budgeting application with expense tracking, goal-setting features, and interactive financial visualization tools.", tags:["JavaScript","UI/UX","Data Visualization","Web Development"], details:["Personal finance interface with expense tracking, budget analytics, and interactive charts for planning and goal monitoring."] },
       { id:8, title:"Keys of Survival", desc:"Lane-based survival game with procedural generation, dynamic obstacle systems, and integrated mini-game mechanics.", tags:["Java","Game Development","Procedural Generation"], details:["Game architecture with procedurally generated levels, key collection, obstacle avoidance and embedded mini-games."] }
@@ -474,6 +479,11 @@ var projectData = {
     items: [
       { id:7, title:"CleanClick &mdash; TU/e High Tech Systems Contest", desc:"Team lead on a wearable neuromuscular interface that lets surgeons control operating-room monitors through sterile gowns using surface EMG, removing the need to ask someone else to click.", tags:["sEMG","Biosignal Processing","Bluetooth HID","Medical Devices","Team Lead"], details:["Surgeons cannot touch imaging workstations mid-procedure without breaking sterile protocol. CleanClick captures muscle signals through surgical gowns and gloves, and a &ldquo;digital clutch&rdquo; layer separates deliberate commands from incidental hand movement during tool use.",
                "The device appears to hospital workstations as a standard Bluetooth input device, so it needs no special software on their side."] },
+      { id:18, title:"Clarity &mdash; Medical Handwriting Reader",
+        desc:"An Android app for reading handwritten prescriptions and clinical notes, turning them into structured information (medication, dose, frequency, duration) while showing how certain each reading is.",
+        tags:["Kotlin","Jetpack Compose","Android","OCR","In Development"],
+        details:["Built with Kotlin and Jetpack Compose using MVVM and the repository pattern, so the recognition pipeline (OCR, then medical entity extraction) is separate from the UI.",
+                 "Designed around transparency: confidence scores for each field and alternative readings when handwriting is ambiguous, plus a history of processed documents. A research and educational project, not for clinical use."] },
       { id:4, title:"Urban Traffic Digital Twin", desc:"Multi-agent simulation of urban traffic with adaptive traffic-signal control.", tags:["Simulation","Multi-Agent","Optimization","Python"], details:["100-vehicle agent-based model of vehicle behaviour and signal timing. Adaptive signal-control strategies reduced time spent in congestion by 10% in simulation."] },
       { id:5, title:"Weather Prediction Neural Network", desc:"LSTM time-series model forecasting temperature, humidity and rainfall 10 days ahead for 100 cities.", tags:["Machine Learning","Python","LSTM","Time Series"], details:["Sequence model trained on historical weather data, with feature engineering and evaluation of forecast accuracy across cities."] }
     ]
